@@ -56,7 +56,8 @@ module.exports = require("os");
 const fs = __webpack_require__(747);
 const path = __webpack_require__(622);
 const AdmZip = __webpack_require__(639);
-const core = __webpack_require__(470);
+/*const core = __webpack_require__(470);*/
+const core = require("@actions/core");
 
 const files = core.getMultilineInput("files");
 const dest = core.getInput("dest");
