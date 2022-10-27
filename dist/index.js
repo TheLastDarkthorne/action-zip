@@ -58,15 +58,12 @@ const path = __webpack_require__(622);
 const AdmZip = __webpack_require__(639);
 const core = __webpack_require__(470);
 
-const files = core.getInput("files");
-const dest = core.getInput("dest");
-const recursive = core.getInput("recursive") === "true";
-
+const files = core.getMultilineInput("files");
 console.log(`Ready to zip "${files}" into ${dest}`);
 
 const zip = new AdmZip();
 
-files.split(" ").forEach(fileName => {
+files.forEach(fileName => {
   const filePath = path.join(process.env.GITHUB_WORKSPACE, fileName);
 
   if (!fs.existsSync(filePath)) {
@@ -93,6 +90,7 @@ const destPath = path.join(process.env.GITHUB_WORKSPACE, dest);
 zip.writeZip(destPath);
 
 console.log(`\nZipped file ${dest} successfully`);
+
 
 
 /***/ }),
